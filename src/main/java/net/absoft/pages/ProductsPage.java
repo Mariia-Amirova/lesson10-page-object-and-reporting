@@ -7,22 +7,22 @@ import org.openqa.selenium.WebElement;
 
 import static org.testng.Assert.assertTrue;
 
-public class InventoryPage extends BaseStorePage {
+public class ProductsPage extends BaseStorePage {
 
   private final String itemXPath = "//div[@class='inventory_item'][.//div[@class='inventory_item_name' and text()='%s']]";
 
-  public InventoryPage(WebDriver driver) {
+  public ProductsPage(WebDriver driver) {
     super(driver);
   }
   @Step("Adding item {itemName} to cart")
-  public InventoryPage addItemToCart(String itemName){
+  public ProductsPage addItemToCart(String itemName){
     WebElement item = driver.findElement(By.xpath(String.format(itemXPath, itemName)));
     WebElement addToCartButton = item.findElement(By.xpath("//button[contains(@data-test, 'add-to-cart')]"));
     addToCartButton.click();
     return this;
   }
   @Step("Remove item {itemName}")
-  public InventoryPage removeItemFromCart(String itemName){
+  public ProductsPage removeItem(String itemName){
     WebElement item = driver.findElement(By.xpath(String.format(itemXPath, itemName)));
     WebElement removeButton = item.findElement(By.xpath("//button[contains(@data-test, 'remove-sauce-labs-backpack')]"));
     removeButton.click();
