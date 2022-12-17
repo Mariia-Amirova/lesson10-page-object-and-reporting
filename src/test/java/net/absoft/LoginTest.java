@@ -1,5 +1,6 @@
 package net.absoft;
 
+import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.fail;
 
 import net.absoft.data.Account;
@@ -16,9 +17,6 @@ public class LoginTest extends BaseTest {
     loginPage.usernameInput.sendKeys(account.getLogin());
     loginPage.passwordInput.sendKeys(account.getPassword());
     loginPage.loginButton.click();
-
     new InventoryPage(driver).shouldSeePrimaryHeader();
-
-    fail("Failing test");
   }
 }

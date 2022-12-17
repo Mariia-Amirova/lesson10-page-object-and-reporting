@@ -4,7 +4,6 @@ import net.absoft.components.PrimaryHeader;
 import org.openqa.selenium.WebDriver;
 
 public abstract class BaseStorePage extends BaseComponent {
-
   private final PrimaryHeader header = new PrimaryHeader(driver);
 
   public BaseStorePage(WebDriver driver) {
@@ -15,8 +14,8 @@ public abstract class BaseStorePage extends BaseComponent {
     header.shouldSeePrimaryHeader();
     return this;
   }
-
-  public CartPage openCart() {
+  public CartPage openCart(){
     return header.openCart();
+
   }
 }

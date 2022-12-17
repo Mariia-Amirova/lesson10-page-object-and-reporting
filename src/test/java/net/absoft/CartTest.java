@@ -7,25 +7,37 @@ import net.absoft.pages.LoginPage;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static org.testng.Assert.assertTrue;
+
 public class CartTest extends BaseTest {
-  private final String ITEM = "Sauce Labs Backpack";
+    private final String ITEM = "Sauce Labs Backpack";
+    private InventoryPage inventoryPage;
 
-  private InventoryPage inventoryPage;
 
-  @BeforeMethod
-  public void setUp() {
-   new LoginPage(driver)
-       .login(Account.STANDARD_USER)
-       .shouldSeePrimaryHeader();
-    inventoryPage = new InventoryPage(driver);
-  }
+    @BeforeMethod
+    public void setUp() {
+        new LoginPage(driver)
+                .login(Account.STANDARD_USER)
+                .shouldSeePrimaryHeader();
+        inventoryPage = new InventoryPage(driver);
+    }
 
-  @Description("Test adding item to cart")
-  @Test
-  public void testAddingItemToCart() {
-    inventoryPage
-        .addItemToCart(ITEM)
-        .openCart()
-        .checkItemPresence(ITEM);
-  }
+    @Description("Test adding item to cart")
+    @Test
+    public void testAddingItemToCart() {
+        inventoryPage
+                .addItemToCart(ITEM)
+                .openCart()
+                .checkItemPresence(ITEM);
+    }
+
+    @Description("Test removing item from cart")
+    @Test
+    public void testRemovingItemFromCart() {
+        inventoryPage
+                .addItemToCart(ITEM)
+                .removeItemFromCart(ITEM)
+                .openCart()
+                .checkItemNotPresence(ITEM);
+    }
 }
