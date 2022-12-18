@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 
 public class CartPage extends BaseStorePage {
   private final String itemXPath = "//div[@class='cart_item'][.//div[@class='inventory_item_name' and text()='%s']]";
+  private final String titleXPath = "//div[@class='header_secondary_container'][.//span[@class='title' and text()='Checkout: Your Information']]";
 
   public CartPage(WebDriver driver) {
     super(driver);
@@ -39,6 +40,14 @@ public class CartPage extends BaseStorePage {
     WebElement removeButton = item.findElement(By.xpath("//button[contains(@data-test, 'remove-sauce-labs-backpack')]"));
     removeButton.click();
     return this;
+  }
+
+  @Step("Click on the checkoutButton")
+  public InfoPage openInfoPage(String titleName){
+    WebElement title = driver.findElement(By.xpath(String.format(itemXPath, titleName)));
+    WebElement checkoutButton = title.findElement(By.xpath("//button[contains(@data-test, 'checkout')]"));
+    checkoutButton.click();
+    return new InfoPage (driver);
   }
 
 }

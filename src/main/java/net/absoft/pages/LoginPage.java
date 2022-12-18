@@ -10,11 +10,11 @@ import static org.testng.Assert.assertTrue;
 
 public class LoginPage extends BaseComponent {
   @FindBy(css = "input[data-test='username']")
-  public WebElement usernameInput;
+  private WebElement usernameInput;
   @FindBy(css = "input[data-test='password']")
-  public WebElement passwordInput;
+  private WebElement passwordInput;
   @FindBy(css = "input[data-test='login-button']")
-  public WebElement loginButton;
+  private WebElement loginButton;
   public LoginPage(WebDriver driver) {
     super(driver);
   }

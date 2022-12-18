@@ -16,10 +16,9 @@ public class CartTest extends BaseTest {
 
     @BeforeMethod
     public void setUp() {
-        new LoginPage(driver)
-                .login(Account.STANDARD_USER)
-                .shouldSeePrimaryHeader();
-        productsPage = new ProductsPage(driver);
+        LoginPage loginPage = new LoginPage(driver);
+        productsPage = loginPage.login(Account.STANDARD_USER);
+        productsPage.shouldSeePrimaryHeader();
     }
 
     @Description("Test adding item to cart")

@@ -6,11 +6,11 @@ public enum Information {
 
     private String firstName;
     private String lastName;
-    private String zip;
-    Information(String firstName, String lastName, String zip) {
+    private String postalCode;
+    Information(String firstName, String lastName, String postalCode) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.zip = zip;
+        this.postalCode = postalCode;
     }
     public String getFirstName() {
         return firstName;
@@ -18,8 +18,8 @@ public enum Information {
     public String getLastName() {
         return lastName;
     }
-    public String getZip() {
-        return zip;
+    public String getPostalCode() {
+        return postalCode;
     }
 
     @Override
@@ -27,7 +27,7 @@ public enum Information {
         return "Information{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", zip ='" + zip + '\'' +
+                ", postalCode ='" + postalCode + '\'' +
                 '}';
     }
 
